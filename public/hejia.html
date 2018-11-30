@@ -2,11 +2,45 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Time Task</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 </head>
 <body>
+<div id="app">
 
 
+    <ol>
+        <!-- 创建一个 todo-item 组件的实例 -->
+        <todo-item
+                v-for="item in nameList"
+                v-bind:todo="item"
+                v-bind:key="item.id"
+        ></todo-item>
+    </ol>
+
+</div>
+<script>
+    <!--定义组建-->
+    // 定义名为 todo-item 的新组件
+    Vue.component('todo-item', {
+        props: ['todo'],
+        template: '<li>{{ todo.text }}</li>'
+    })
+
+    //use it and post data
+    var app = new Vue({
+        el: '#app',
+        data: {
+            nameList: [
+                {id: 0, text: 'aaa'},
+                {id: 1, text: 'bbb'}
+            ]
+        }
+
+    })
+
+
+</script>
 
 </body>
 </html>
